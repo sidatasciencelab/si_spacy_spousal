@@ -1,0 +1,9 @@
+name: si_spacy
+channels:
+  - conda-forge
+dependencies:
+  - spacy
+  - gensim
+  - spacy-lookups-data
+  - python==3.8.6
+prefix: /Users/triznam/miniconda3/envs/si_spacy

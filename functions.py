@@ -121,8 +121,10 @@ def training(model_name):
                         workers=cores-1)
     w2v_model.build_vocab(sentences, progress_per=10000)
     w2v_model.train(sentences, total_examples=w2v_model.corpus_count, epochs=30, report_delay=1)
-    w2v_model.save(f"word_vectors/{model_name}.model")
-    w2v_model.wv.save_word2vec_format(f"word_vectors/word2vec_{model_name}.txt")
+    with open(f"word_vectors/{model_name}.model","wb") as model_out:
+        w2v_model.save(model_out)
+    with open(f"word_vectors/word2vec_{model_name}.txt","wb") as w2v_out:
+        w2v_model.wv.save_word2vec_format(w2v_out)
 
 def testing(term):
     from gensim.models.word2vec import Word2Vec
